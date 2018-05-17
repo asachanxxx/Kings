@@ -1,0 +1,110 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>RXJS Obervables</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Pleayer Name</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Playe Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Avator Name</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter something">
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button #button1 type="button" (click)="Promisses()" class="btn btn-primary">Submit</button>
+          <button #button2 type="button" (click)="ClicOperator()" class="btn btn-primary">From Operator</button>
+          <button #button2 type="button" (click)="CombineLates()" class="btn btn-primary">Combine Latest</button>
+          
+        </form>
+
+        <div id="myel">
+          {{inject}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+      <div>
+          <button id='red'>Red</button>
+          <button id='black'>Black</button>
+        </div>
+        <div>Red: <span id="redTotal"></span> </div>
+        <div>Black: <span id="blackTotal"></span> </div>
+        <div>Total: <span id="total"></span> </div>
+  </div>
+</div>
+
+<br>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Code that we used!!!</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header  bg-success text-white">
+        <h4>fromEvent</h4>
+      </div>
+      <div class="card-body">
+        <pre>
+        var buttonStream = fromEvent(this.button.nativeElement, 'click')
+        var subscription = buttonStream.subscribe((Evt:MouseEvent)=>{{ '{' }} 
+          console.log(`Coords: ${{ '{' }}Evt.clientX{{ '}' }} X ${{ '{' }}Evt.clientY{{ '}' }}`);
+          if (Evt.clientX < 40 && Evt.clientY < 40) {{ '{' }}
+            subscription.unsubscribe();
+            {{ '}' }}
+            {{ '}' }})
+        
+      </pre>
+        <h5>HTML</h5>
+        <pre>
+         put #button1 tag on button
+      </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header bg-success text-white">
+        <h4>OF and From </h4>
+      </div>
+      <div class="card-body">
+        <pre>
+            of-you can make boservable by using of keyword. also you can make observable from another observable by from keyword
+            
+
+            myObs = of('Hello', 'Alligator', 'World!');
+            myObsfrom = from(this.myObs);  
+
+            DoFilter()  {{ '{' }}
+              this.myObs
+              .pipe
+              (
+                tap(x => console.log(x)),
+                map(x => x.toUpperCase()),
+                filter(x => x.length > 8)
+                )
+                .subscribe(x => console.log(x))
+            {{ '}' }} 
+            
+          </pre>
+      </div>
+    </div>
+  </div>
+
+</div>
